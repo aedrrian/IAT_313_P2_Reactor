@@ -1,50 +1,73 @@
-[gd_scene load_steps=5 format=3 uid="uid://ceopprp6xr6e3"]
+[gd_scene load_steps=6 format=3 uid="uid://ceopprp6xr6e3"]
 
 [ext_resource type="Texture2D" uid="uid://cb5e32ad4elyc" path="res://assets/desk.png" id="1_agauv"]
+[ext_resource type="Script" uid="uid://ky1sdpdmt1bq" path="res://src/investigator_room.gd" id="1_vqwst"]
 [ext_resource type="Texture2D" uid="uid://tbrufjyxni1s" path="res://assets/document.png" id="2_hoy8f"]
 [ext_resource type="Script" uid="uid://bqm4wj0mkmqm4" path="res://src/document.gd" id="3_feo3k"]
-[ext_resource type="PackedScene" uid="uid://c52vhjea4lgw5" path="res://src/player.tscn" id="3_hoy8f"]
+[ext_resource type="Script" uid="uid://b2uw4wopy7w6g" path="res://src/button.gd" id="6_yq4ky"]
 
 [node name="investigator_room" type="Node2D"]
+script = ExtResource("1_vqwst")
 
 [node name="Desk" type="Sprite2D" parent="."]
-position = Vector2(531, 234)
+position = Vector2(364.81818, 156)
+scale = Vector2(0.48636362, 0.48636365)
 texture = ExtResource("1_agauv")
 
-[node name="Document" type="Sprite2D" parent="."]
-position = Vector2(195, 128)
+[node name="Doc2" type="Sprite2D" parent="."]
+position = Vector2(489, 147)
 texture = ExtResource("2_hoy8f")
 script = ExtResource("3_feo3k")
 
-[node name="Button" type="Button" parent="Document"]
+[node name="Button" type="Button" parent="Doc2"]
 self_modulate = Color(1, 1, 1, 0)
-anchors_preset = -1
-anchor_right = 0.156
-anchor_bottom = 0.063
-offset_left = -51.0
-offset_top = -66.0
-offset_right = 34.4
-offset_bottom = 58.684
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.999985
+offset_top = -132.00002
+offset_right = 1.5258789e-05
+offset_bottom = -1.5258789e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Document2" type="Sprite2D" parent="."]
-position = Vector2(339, 151)
+[node name="Doc1" type="Sprite2D" parent="."]
+position = Vector2(359, 142)
 texture = ExtResource("2_hoy8f")
 script = ExtResource("3_feo3k")
 
-[node name="Button" type="Button" parent="Document2"]
+[node name="Button" type="Button" parent="Doc1"]
 self_modulate = Color(1, 1, 1, 0)
-anchors_preset = -1
-anchor_right = 0.156
-anchor_bottom = 0.063
-offset_left = -51.0
-offset_top = -66.0
-offset_right = 34.4
-offset_bottom = 58.684
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.999985
+offset_top = -132.00002
+offset_right = 1.5258789e-05
+offset_bottom = -1.5258789e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="player" parent="." instance=ExtResource("3_hoy8f")]
-position = Vector2(-219, 113)
+[node name="HighlightButton" type="Button" parent="."]
+offset_left = 497.0
+offset_top = 274.0
+offset_right = 615.0
+offset_bottom = 346.0
+text = "inspect"
+script = ExtResource("6_yq4ky")
+metadata/_edit_use_anchors_ = true
 
-[connection signal="button_down" from="Document/Button" to="Document" method="_on_button_button_down"]
-[connection signal="button_up" from="Document/Button" to="Document" method="_on_button_button_up"]
-[connection signal="button_down" from="Document2/Button" to="Document2" method="_on_button_button_down"]
-[connection signal="button_up" from="Document2/Button" to="Document2" method="_on_button_button_up"]
+[connection signal="button_down" from="Doc2/Button" to="Doc2" method="_on_button_button_down"]
+[connection signal="button_up" from="Doc2/Button" to="Doc2" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Doc2/Button" to="Doc2" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Doc2/Button" to="Doc2" method="_on_button_mouse_exited"]
+[connection signal="button_down" from="Doc1/Button" to="Doc1" method="_on_button_button_down"]
+[connection signal="button_up" from="Doc1/Button" to="Doc1" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="Doc1/Button" to="Doc1" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Doc1/Button" to="Doc1" method="_on_button_mouse_exited"]
